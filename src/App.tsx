@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getPosts } from './api';
 import './App.scss';
-
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
+import { PostsList } from './components/PostsList/PostsList';
 
 export const App: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  /* const AddPost = (newPost: Post) => {
+    if (!posts.some(post => post.id === newPost.id)) {
+      setPosts([...posts, newPost]);
+    }
+  }; */
+
+  const loadPosts = async () => {
+    const postsArray = await getPosts();
+
+    setPosts(postsArray);
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, [setPosts]);
+
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
+    <div className="body">
+      <div className="title">Posts List</div>
+      <div className="page">
+        <div className="page-content">
+          <PostsList posts={posts} loadPosts={loadPosts} />
+        </div>
+      </div>
     </div>
   );
 };

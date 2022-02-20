@@ -1,0 +1,45 @@
+.update-post-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-top: 1px solid darkblue;
+  padding-top: 10px;
+  box-sizing: border-box;
+
+  &__title {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  &__input {
+    margin-right: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid darkblue;
+    padding-left: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 2px solid darkblue;
+    }
+  }
+
+  &__button {
+    width: 150px;
+    height: 30px;
+    box-sizing: border-box;
+    font-size: 15px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    background-color: lightgray;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #fff;
+    }
+  }
+}
